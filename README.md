@@ -2,7 +2,7 @@
 
 S3 accepts uploads via specially-crafted and pre-authorized HTML POST Form (http://aws.amazon.com/articles/1434/). This gem will help you create two values: Signature and Policy.
 
-You guys can use this gem when working with upload file by AngularJS -  (https://github.com/danialfarid/ng-file-upload#s3)
+You guys can use this gem when working with upload file by AngularJS -  (https://github.com/danialfarid/ng-file-upload#s3) or Cordova File Transfer plugin (https://github.com/apache/cordova-plugin-file-transfer) or any front-end stack.
 
 ## Installation
 
@@ -23,14 +23,14 @@ Or install it yourself as:
 ## Usage
 
 
-```
+```ruby
 require 's3/authorize'
 
 s3_authorize = S3::Authorize.new(bucket: 'example', acl: 'public-read', 'secret_key': '356789032')
 
 s3_policy = s3_authorize.policy # eyJleHBpcmF0aW9uIjoiMjAxNi0wNC0yNlQxOTozNjowNFoiLCJjb25 ....
 
-s3-signature = s3_authorize.signature(s3_policy) # VR9hEPY0zvMHOt .... 
+s3-signature = s3_authorize.signature(s3_policy) # VR9hEPY0zvMHOt ....
 ```
 
 ## Contributing
