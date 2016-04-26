@@ -41,9 +41,9 @@ module S3
         {
           "expiration" => (Time.now + 60 * 60).utc.xmlschema,
           "conditions" => [
-            { "bucket": bucket },
+            { "bucket" => bucket },
             [ "starts-with", "$key", "" ],
-            { "acl": acl },
+            { "acl" => acl },
             [ "starts-with", "$Content-Type", "" ],
             [ "starts-with", "$filename", "" ],
             [ "content-length-range", 0, 10 * 1024 * 1024 ]
