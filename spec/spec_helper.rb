@@ -1,1 +1,1 @@
-require "s3/signature"
+require "s3/authorize"
