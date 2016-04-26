@@ -1,4 +1,4 @@
-# S3::Signature
+# S3::Authorize
 
 S3 accepts uploads via specially-crafted and pre-authorized HTML POST Form (http://aws.amazon.com/articles/1434/). This gem will help you create two values: Signature and Policy.
 
@@ -9,7 +9,7 @@ You guys can use this gem when working with upload file by AngularJS -  (https:/
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 's3-signature'
+gem 's3-authorize'
 ```
 
 And then execute:
@@ -18,15 +18,24 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install s3-signature
+    $ gem install s3-authorize
 
 ## Usage
 
-Update soon
+
+```
+require 's3/authorize'
+
+s3_authorize = S3::Authorize.new(bucket: 'example', acl: 'public-read', 'secret_key': '356789032')
+
+s3_policy = s3_authorize.policy # eyJleHBpcmF0aW9uIjoiMjAxNi0wNC0yNlQxOTozNjowNFoiLCJjb25 ....
+
+s3-signature = s3_authorize.signature(s3_policy) # VR9hEPY0zvMHOt .... 
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/vinhnglx/s3-signature. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/vinhnglx/s3-authorize. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
