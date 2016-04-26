@@ -1,5 +1,7 @@
 # S3::Authorize
 
+[![Build Status](https://travis-ci.org/vinhnglx/s3-authorize.svg?branch=master)](https://travis-ci.org/vinhnglx/s3-authorize)
+
 S3 accepts uploads via specially-crafted and pre-authorized HTML POST Form (http://aws.amazon.com/articles/1434/). This gem will help you create two values: Signature and Policy.
 
 You guys can use this gem when working with upload file by AngularJS -  (https://github.com/danialfarid/ng-file-upload#s3) or Cordova File Transfer plugin (https://github.com/apache/cordova-plugin-file-transfer) or any front-end stack.
