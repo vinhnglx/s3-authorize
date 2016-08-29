@@ -16,7 +16,7 @@ module S3
     #
     # Examples
     #
-    #   S3Authorize.new({bucket: 'example', acl: 'private', secret_key: '123456789'})
+    #   S3Authorize.new({bucket: 'example', acl: 'private', secret_key: '123456789', expiration: 60})
     #
     # Returns nothing
     def initialize(args)
@@ -24,6 +24,8 @@ module S3
       @bucket = args[:bucket]
       @acl = args[:acl]
       @secret_key = args[:secret_key]
+      calc_expiration = -> (minutes) { (Time.now + minutes * 60).utc.xmlschema }
+      @expiration = args[:expiration] ? calc_expiration.call(args[:expiration]) : calc_expiration.call(60)
     end
 
     # Generate policy
@@ -39,7 +41,7 @@ module S3
     def policy
       Base64.encode64(
         {
-          "expiration" => (Time.now + 60 * 60).utc.xmlschema,
+          "expiration" => @expiration,
           "conditions" => [
             { "bucket" => bucket },
             [ "starts-with", "$key", "" ],

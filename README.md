@@ -28,11 +28,11 @@ Or install it yourself as:
 ```ruby
 require 's3/authorize'
 
-s3_authorize = S3::Authorize.new(bucket: 'example', acl: 'public-read', 'secret_key': '356789032')
+s3_authorize = S3::Authorize.new(bucket: 'example', acl: 'public-read', secret_key: '356789032', expiration: 45) # expiration option (in minutes) is optional, it defaults to 60 minutes
 
 s3_policy = s3_authorize.policy # eyJleHBpcmF0aW9uIjoiMjAxNi0wNC0yNlQxOTozNjowNFoiLCJjb25 ....
 
-s3-signature = s3_authorize.signature(s3_policy) # VR9hEPY0zvMHOt ....
+s3_signature = s3_authorize.signature(s3_policy) # VR9hEPY0zvMHOt ....
 ```
 
 ## Contributing
