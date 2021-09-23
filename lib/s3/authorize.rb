@@ -24,6 +24,8 @@ module S3
       @bucket = args[:bucket]
       @acl = args[:acl]
       @secret_key = args[:secret_key]
+      @min_file_size = args[:min_file_size] || 0
+      @max_file_size = args[:max_file_size] || (10 * 1024 * 1024)
     end
 
     # Generate policy
@@ -46,7 +48,7 @@ module S3
             { "acl" => acl },
             [ "starts-with", "$Content-Type", "" ],
             [ "starts-with", "$filename", "" ],
-            [ "content-length-range", 0, 10 * 1024 * 1024 ]
+            [ "content-length-range", @min_file_size, @max_file_size ]
           ]
         }.to_json).gsub(/\n/,'')
     end
